@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHAT</title>
-    <link rel="stylesheet" href="Chat_App.css" />
+    <link rel="stylesheet" href="Chat_App.css">
 </head>
 <body>
     <div class="person-selector">
@@ -13,7 +13,6 @@
     </div>
     <div class="chat-container">
         <h2 class="chat-header">Lecturer chatting...</h2>
-
         <div class="chat-messages">
             <div class="message blue-bg">
                 <div class="message-sender">Lecturer</div>
@@ -24,14 +23,15 @@
                 <div class="message-sender">Student</div>
                 <div class="message-text">I will confirm first and get back to you</div>
                 <div class="message-timestamp">10.20 AM</div>
-
         </div>
         <div>
             <form class="chat-input-form">
                 <input type="text" class="chat-input" required placeholder="Type here, lecturer..."/>
-                <button type="submit"></button>
+                <button type="submit" class="button send-button">Send</button>
             </form>
+            <button class="button clear-chat-button">Clear Chat</button>
         </div>
+        <script src="Chat_App.js"></script>
     </div>
 
 </body>

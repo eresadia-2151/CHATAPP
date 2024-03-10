@@ -45,22 +45,22 @@ lecturerSelectorBtn.onclick = () => updateMessageSender('Lecturer')
 studentSelectorBtn.onclick = () => updateMessageSender('Student')
 
 const sendMessage = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const timestamp = new Date().toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true})
+    const timestamp = new Date().toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
     const message = {
-        sender: '',
+        sender: messageSender,
         text: chatInput.value,
         timestamp,
-    }
+    };
 
-    messages.push(message)
-    localStorage.setItem('messages', JSON.stringify(message))
-    chatMessages.innerHTML += createChatMessageElement(message)
+    messages.push(message);
+    localStorage.setItem('messages', JSON.stringify(message));
+    chatMessages.innerHTML += createChatMessageElement(message);
 
-    chatInputForm.reset()
-    chatMessages.scrollTop = chatMessages.scrollHeight
-}
+    chatInputForm.reset();
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+};
 
 chatInputForm.addEventListener('submit', sendMessage)
 

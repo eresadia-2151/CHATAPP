@@ -55,7 +55,7 @@ const sendMessage = (e) => {
     };
 
     messages.push(message);
-    localStorage.setItem('messages', JSON.stringify(message));
+    localStorage.setItem('messages', JSON.stringify(storedMessage));
     chatMessages.innerHTML += createChatMessageElement(message);
 
     chatInputForm.reset();

@@ -22,7 +22,7 @@ window.onload = () =>{
     })
 }
 
-let messageSender = 'Lecturer'
+let messageSender = 'Student'
 
 const updateMessageSender = (name) => {
     messageSender = name
@@ -45,22 +45,22 @@ lecturerSelectorBtn.onclick = () => updateMessageSender('Lecturer')
 studentSelectorBtn.onclick = () => updateMessageSender('Student')
 
 const sendMessage = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const timestamp = new Date().toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
+    const timestamp = new Date().toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true})
     const message = {
-        sender: messageSender,
+        sender: '',
         text: chatInput.value,
         timestamp,
-    };
+    }
 
-    messages.push(message);
-    localStorage.setItem('messages', JSON.stringify(storedMessage));
-    chatMessages.innerHTML += createChatMessageElement(message);
+    messages.push(message)
+    localStorage.setItem('messages', JSON.stringify(message))
+    chatMessages.innerHTML += createChatMessageElement(message)
 
-    chatInputForm.reset();
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-};
+    chatInputForm.reset()
+    chatMessages.scrollTop = chatMessages.scrollHeight
+}
 
 chatInputForm.addEventListener('submit', sendMessage)
 

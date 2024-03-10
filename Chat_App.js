@@ -6,7 +6,7 @@ const chatInputForm = document.querySelector('.chat-input-form')
 const chatInput = document.querySelector('.chat-input')
 const clearChatBtn = document.querySelector('.clear-chat-button')
 
-const chatMessageElement = (message) => `
+const createChatMessageElement = (message) => `
 <div class="message ${message.sender === 'Lecturer' ? 'blue-bg' : 'gray-bg'}">
  <div class="message-sender">${message.sender}</div>
  <div class="message-text">${message.text}</div>
@@ -19,7 +19,18 @@ let messageSender = 'Lecturer'
 const updateMessageSender = (name) => {
     messageSender = name
     chatHeader.innerText = `${messageSender} chatting...`
-    chatInput.placeholder = `Type here, ${messageSender}`
+    chatInput.placeholder = `Type here, ${messageSender}...`
+
+    if (name === 'Lecturer') {
+        lecturerSelectorBtn.classList.add('active-person')
+        studentSelectorBtn.classList.remove('active-person')
+    }
+    if (name === 'Student') {
+        studentSelectorBtn.classList.add('active-person')
+        lecturerSelectorBtn.classList.remove('active-person')
+    }
+
+    chatInput.focus()
 }
 
 lecturerSelectorBtn.onclick = () => updateMessageSender('Lecturer')
@@ -34,4 +45,11 @@ const sendMessage = (e) => {
         text: chatInput.value,
         timestamp,
     }
+
+    chatMessages.innerHTML += createChatMessageElement(message)
+
+    chatInputForm.reset()
+    chatMessages.scrollTop = chatMessages.scrollHeight
 }
+
+chatInputForm.addEventListener('submit', sendMessage)
